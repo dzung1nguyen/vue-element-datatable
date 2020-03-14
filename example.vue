@@ -1,6 +1,7 @@
 <template>
     <div>
-        <datatable :config="datatableConfig" :fetchData="fetchData"></datatable>
+        <button @click="customSearch">Custom Search</button>
+        <datatable :config="datatableConfig" ref="usersDatatable"></datatable>
     </div>
 </template>
 
@@ -30,7 +31,7 @@
                             text: 'Delete',
                             method: function (index, row) {
                                 console.log('Delete', row)
-                                vm.fetchData++
+                                vm.$refs.usersDatatable.loadPage()
                             },
                         }
                     ],
@@ -57,8 +58,8 @@
                             text: 'User Email',
                             data: 'email',
                             name: 'email',
-                            /*
                             searchable: true,
+                            /*
                             orderable: true,
                             */
                         }
@@ -82,13 +83,11 @@
                 }
             }
         },
-        mounted() {
-            let vm = this
-            // Test send custom params to search
-            setTimeout(function () {
-                vm.$set(vm.datatableConfig.customParamsRequest, 'type', 'xyz')
-                vm.fetchData++
-            }, 5000)
+         methods: {
+            customSearch() {
+                this.$set(this.datatableConfig.customParamsRequest, 'type', 'ccccc')
+                this.$refs.usersDatatable.loadPage()
+            }
         }
     }
 </script>
