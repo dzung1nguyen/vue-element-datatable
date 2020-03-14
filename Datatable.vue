@@ -174,7 +174,7 @@
                 let columnIndex = await _.findIndex(this.input.columns, function (o) {
                     return o.data === sort.prop
                 })
-                if (columnIndex) {
+                if (columnIndex !== -1) {
                     let order = []
                     if (sort.order) {
                         let dir = sort.order === 'ascending' ? 'asc' : 'desc'
