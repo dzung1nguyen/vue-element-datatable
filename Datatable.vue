@@ -44,7 +44,7 @@
 </template>
 
 <script>
-    import ApiService from './ApiService'
+    import axios from 'axios'
     import {toQueryString} from './utils'
     import _ from 'lodash'
 
@@ -129,7 +129,7 @@
         methods: {
             async fetch() {
                 const vm = this
-                let url = this.url;
+                let url = this.url
                 let input = {
                     ...this.input,
                     // _params to send custom search
@@ -140,9 +140,9 @@
                 this.disabledPagination = true
                 if (method === 'get') {
                     let queryString = await toQueryString({...input})
-                    url += `?${queryString}`;
+                    url += `?${queryString}`
                 }
-                const customData = {
+                const customRequest = {
                     method,
                     url,
                     data: method === 'get' ? {} : {...input}
@@ -150,8 +150,8 @@
                 try {
                     this.oldSearchText = this.input.search.value
                     this.input.draw++
-                    let response = await ApiService.customRequest(customData)
-                    this.$set(this, 'result', {...response})
+                    let response = await axios(customRequest)
+                    this.$set(this, 'result', {...response.data})
                 } catch (e) {
                     console.error(url, e)
                 }
