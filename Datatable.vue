@@ -44,8 +44,8 @@
 </template>
 
 <script>
-    import ApiService from "../../services/ApiService"
-    import {toQueryString} from "@utils"
+    import ApiService from "./ApiService"
+    import {toQueryString} from "./utils"
     import _ from 'lodash';
 
     export default {
