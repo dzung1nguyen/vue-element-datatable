@@ -50,7 +50,7 @@
 
     export default {
         name: 'Datatable',
-        props: ['config', 'fetchData'],
+        props: ['config'],
         data() {
             const config = this.config
             // Columns
@@ -114,13 +114,6 @@
             },
             customParamsRequest: function () {
                 return this.config.customParamsRequest ? {...this.config.customParamsRequest} : {}
-            }
-        },
-        watch: {
-            fetchData: function (newValue, oldValue) {
-                if (newValue > oldValue) {
-                    this.loadPage(1)
-                }
             }
         },
         mounted() {
