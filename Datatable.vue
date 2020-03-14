@@ -44,9 +44,9 @@
 </template>
 
 <script>
-    import ApiService from "./ApiService"
-    import {toQueryString} from "./utils"
-    import _ from 'lodash';
+    import ApiService from './ApiService'
+    import {toQueryString} from './utils'
+    import _ from 'lodash'
 
     export default {
         name: 'Datatable',
