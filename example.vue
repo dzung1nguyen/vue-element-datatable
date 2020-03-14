@@ -15,7 +15,7 @@
             return {
                 fetchData: 0,
                 datatableConfig: {
-                    url: '/user-datatale',
+                    url: '/users/data',
                     method: 'get',
                     operations: [
                         {
