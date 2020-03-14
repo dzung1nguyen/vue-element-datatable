@@ -117,10 +117,10 @@
             }
         },
         mounted() {
-            this.fetch()
+            this.fetchData()
         },
         methods: {
-            async fetch() {
+            async fetchData() {
                 const vm = this
                 let url = this.url
                 let input = {
@@ -164,7 +164,7 @@
                     this.currentPage = pageNumber
                 }
                 this.$set(this.input, 'start', this.input.length * (pageNumber - 1))
-                this.fetch()
+                this.fetchData()
             },
             handleSizeChange(size) {
                 this.input.length = size
